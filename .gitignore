@@ -253,3 +253,5 @@ typings/
 # Archivos de caché de Rider
 .idea/
 *.sln.iml
+/SAM_RH/.vs/SAM_RH/v17/DocumentLayout.json
+/SAM_RH/.vs/SAM_RH/v17/.suo
