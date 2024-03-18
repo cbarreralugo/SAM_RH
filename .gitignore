@@ -2,4 +2,254 @@
 # Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
 ################################################################################
 
-/SAM_RH/SAM_RH/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+# Binarios y archivos compilados
+*.exe
+*.dll
+*.pdb
+*.compiled
+*.suo
+*.cache
+*.sbr
+
+# Carpeta generada por Visual Studio
+[Tt]emp/
+[Vv]isual[Ss]tudio/
+*.VisualState.xml
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vssscc
+.builds
+
+# Carpeta generada por Rider
+.idea/
+
+# Carpeta generada por Visual Studio Code
+.vscode/
+
+# Carpetas generadas por herramientas de compilación
+_ReleaseNotes/
+Backup*/
+UpgradeLog*.htm
+UpgradeLog*.xml
+_ReSharper*/
+
+# Carpeta de salida de MSBuild
+bin/
+obj/
+
+# Carpeta de publicación
+[Pp]ublish/
+_Package/
+*.deploy.*
+
+# Archivos de compilación de Visual Studio
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+
+# Archivos de análisis y resultados de pruebas
+TestResults/
+
+# Carpetas de NuGet
+packages/
+
+# Archivos de caché de NuGet
+*.nupkg
+*.paket
+packages.lock.json
+*.lock.json
+
+# Carpeta de nodos
+node_modules/
+
+# Archivos de compilación de TypeScript
+*.js.map
+*.js
+
+# Archivos de generación automática de TypeScript
+*.d.ts
+
+# Archivos de configuración de TypeScript
+tsconfig.json
+tslint.json
+
+# Carpeta de compilación de webpack
+/dist/
+
+# Carpetas y archivos generados por Yarn
+/.pnp/
+.pnp.js
+.yarn/
+yarn.lock
+
+# Archivos de caché de Yarn
+.cache/
+
+# Carpetas generadas por npm
+/node_modules
+npm-debug.log*
+yarn-error.log*
+
+# Archivos de compilación generados por Webpack
+*.bundle.js
+*.bundle.js.map
+
+# Archivos de registro de compilación de Webpack
+build-log.txt
+
+# Carpeta de resultados de cobertura
+/coverage/
+
+# Archivos de resultados de cobertura
+*.lcov
+
+# Archivos generados por la extensión de GitHub
+.idea
+
+# Archivos de configuración generados por la extensión de GitHub
+.github
+
+# Archivos de análisis de sonarqube
+.sonarqube/
+
+# Archivos de información de TypeScript
+typings/
+
+# Archivos de análisis de DepShield
+.dependencycheck/
+
+# Carpeta de generación de Unity
+/[Ll]ibrary/
+
+# Archivos generados por Unity
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+
+# Archivos de configuración de Unity
+[Ll]ocal[Cc]ache/
+[Ss]treamingAssets/
+
+# Archivos de caché de Unity
+[Cc]ache/
+[Te]mp/
+[Oo]bj/
+
+# Carpeta de exportación de Unity
+[Bb]uild/
+
+# Archivos de proyecto de Unity
+[Ll]ibrary/
+[Aa]ssets/Plugins/
+
+# Archivos de Android
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Archivos de iOS
+*.ipa
+*.app
+
+# Archivos de caché de Gradle
+.gradle/
+
+# Archivos de caché de IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Archivos de caché de Rider
+.idea/
+*.sln.iml
+
+# Archivos de caché de Visual Studio Code
+.vscode/
+*.sln.code-workspace
+
+# Archivos generados por Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archivos generados por Windows
+Thumbs.db
+ehthumbs.db
+
+# Archivos generados por Android
+Android_*/
+
+# Archivos de imagen de Adobe
+[Oo]ptimized.*.*
+*_nomap.jpg
+*_notile.jpg
+*_nomipmap.jpg
+
+# Archivos de paquete de Adobe
+*.ccp
+*.ccpkb
+
+# Archivos de esquema de Unity
+*.shadergraph
+*.uxml
+*.uss
+
+# Carpetas generadas por Unity
+Assembly-*/ 
+UnityEngineGenerated*/
+
+# Archivos generados por Unity
+[Oo]bj/
+[Bb]uild/
+[Ll]ibrary/
+
+# Archivos de backup de Unity
+[Bb]ackup*/
+[Tt]emp*/
+[Oo]bj*/
+[Ll]ibrary*/
+
+# Archivos generados por la extensión de GitHub
+.idea
+
+# Archivos de configuración generados por la extensión de GitHub
+.github
+
+# Archivos de análisis de sonarqube
+.sonarqube/
+
+# Archivos de información de TypeScript
+typings/
+
+# Archivos de análisis de DepShield
+.dependencycheck/
+
+# Archivos de proyecto Rider
+.idea/
+*.sln.iml
+
+# Archivos de caché de Rider
+.idea/
+*.sln.iml
