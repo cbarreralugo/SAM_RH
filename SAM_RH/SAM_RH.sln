@@ -5,6 +5,10 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM_RH", "SAM_RH\SAM_RH.csproj", "{AD826B26-174D-48F8-8DD7-E22AFCC99A62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM_RH_DALC", "SAM_RH_DALC\SAM_RH_DALC.csproj", "{2268D866-D057-4FDB-A9D0-035E29952809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM_RH_Negocio", "SAM_RH_Negocio\SAM_RH_Negocio.csproj", "{C1D4C6CF-E07F-44BB-AD91-9FC28730A136}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AD826B26-174D-48F8-8DD7-E22AFCC99A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD826B26-174D-48F8-8DD7-E22AFCC99A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD826B26-174D-48F8-8DD7-E22AFCC99A62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2268D866-D057-4FDB-A9D0-035E29952809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2268D866-D057-4FDB-A9D0-035E29952809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2268D866-D057-4FDB-A9D0-035E29952809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2268D866-D057-4FDB-A9D0-035E29952809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D4C6CF-E07F-44BB-AD91-9FC28730A136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D4C6CF-E07F-44BB-AD91-9FC28730A136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D4C6CF-E07F-44BB-AD91-9FC28730A136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D4C6CF-E07F-44BB-AD91-9FC28730A136}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
