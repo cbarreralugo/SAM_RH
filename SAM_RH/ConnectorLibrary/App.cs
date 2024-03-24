@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using ConnectorLibrary.FamiliaConector;
-using System.Configuration;
+﻿using System.Configuration;
+using System.Diagnostics;
+using ConnectorLibrary.FamiliaConector; 
 
 namespace ConnectorLibrary
 {
-    public class MyApplication
+    public class App
     {
         private static readonly object _mutex = new object();
 
@@ -20,7 +17,7 @@ namespace ConnectorLibrary
             {
                 if (connector == null)
                 {
-                    connector = new FamiliaConector.Sql.Conector(ConfigurationManager.ConnectionStrings["DEV"].ConnectionString);
+                    connector = new ConnectorLibrary.FamiliaConector.Sql.Conector(ConfigurationManager.AppSettings["DEV"].ToString());
                 }
             }
             return connector;

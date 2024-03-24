@@ -46,6 +46,8 @@
     <Compile Include="App.cs" />
     <Compile Include="FamiliaConector\IFamiliaConector.cs" />
     <Compile Include="FamiliaConector\IFamiliaConectorMDX.cs" />
+    <Compile Include="FamiliaConector\MySQL\ConectorMySQL.cs" />
+    <Compile Include="FamiliaConector\Oracle\ConectorOracle.cs" />
     <Compile Include="FamiliaConector\Sql\Conector.cs" />
     <Compile Include="FamiliaConector\Sql\ConectorMDX.cs" />
     <Compile Include="Impersonator.cs" />
@@ -53,8 +55,6 @@
     <Compile Include="UsuarioServicio.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FamiliaConector\Oracle\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -78,13 +78,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controlador\Evaluacion_Controlador.cs" />
+    <Compile Include="Controlador\Usuario_Controlador.cs" />
+    <Compile Include="Modelo\Evaluacion_Modelo.cs" />
+    <Compile Include="Modelo\Usuario_Modelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SAM_RH_DALC\SAM_RH_DALC.csproj">
-      <Project>{2268d866-d057-4fdb-a9d0-035e29952809}</Project>
-      <Name>SAM_RH_DALC</Name>
-    </ProjectReference>
+    <Compile Include="Utilidades\StoredProcedures.cs" />
+    <Compile Include="Utilidades\Funciones.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -95,6 +95,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConnectorLibrary\ConnectorLibrary.csproj">
+      <Project>{fbac0fed-3206-41db-b097-750a5d97a4db}</Project>
+      <Name>ConnectorLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />

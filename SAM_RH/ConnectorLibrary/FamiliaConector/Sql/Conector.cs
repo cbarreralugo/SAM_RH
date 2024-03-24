@@ -397,7 +397,7 @@ namespace ConnectorLibrary.FamiliaConector.Sql
             }
             return num;
         }
-        //POSIBLE USO
+        
         public int EjecutarTransaccionInsertarMasivo(string[] inserts, out string status)
         {
             SqlTransaction transaction = null;
@@ -693,6 +693,7 @@ namespace ConnectorLibrary.FamiliaConector.Sql
                     }
                     catch (Exception ex)
                     {
+                        MessageBox.Show("ERROR: " + ex.Message);
                         string x = ex.Message;
                     }
                 }
@@ -719,6 +720,7 @@ namespace ConnectorLibrary.FamiliaConector.Sql
                         }
                         catch (Exception e)
                         {
+                            MessageBox.Show("ERROR: " + e.Message);
                             cmd.Connection.Close();
                             throw new Exception(e.Message);
                         }
@@ -727,6 +729,7 @@ namespace ConnectorLibrary.FamiliaConector.Sql
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show("ERROR: " + ex.Message);
                     string x = ex.Message;
                 }
             }
