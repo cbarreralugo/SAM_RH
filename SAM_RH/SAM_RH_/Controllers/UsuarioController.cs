@@ -25,7 +25,9 @@ namespace SAM_RH_.Controllers
 
         public ActionResult Nuevo(Usuario_Modelo modelo) { 
         datos.Crear(modelo);
-            return View("Crear",modelo);  
+            return View("Index",modelo);  
         }
+
+        
     }
 }

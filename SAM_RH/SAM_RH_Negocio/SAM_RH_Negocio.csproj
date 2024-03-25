@@ -81,6 +81,8 @@
     <Compile Include="Controlador\Evaluacion_Controlador.cs" />
     <Compile Include="Controlador\Usuario_Controlador.cs" />
     <Compile Include="Modelo\Evaluacion_Modelo.cs" />
+    <Compile Include="Modelo\Evaluacion_Preguntas_Modelo.cs" />
+    <Compile Include="Modelo\Evaluacion_Respuestas_Modelo.cs" />
     <Compile Include="Modelo\Usuario_Modelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\StoredProcedures.cs" />

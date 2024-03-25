@@ -32,7 +32,7 @@ namespace SAM_RH_DALC.Datos
                             Departamento = dataTable.Rows[i]["Departamento"].ToString(),
                             UsrLocal = dataTable.Rows[i]["UsrLocal"].ToString(),
                             Fecha_Creacion = dataTable.Rows[i]["Ultima actualización"].ToString(),
-                            Nombre_Estatus = dataTable.Rows[i]["Estatus de evaluacion"].ToString(),
+                            Nombre_Estatus = dataTable.Rows[i]["Estatus de evaluación"].ToString(),
                         };
                         lista.Add(modelo);
                     }

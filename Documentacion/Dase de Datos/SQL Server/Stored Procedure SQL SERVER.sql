@@ -1,9 +1,9 @@
 -- 1. Generate Questions for Evaluations
-IF OBJECT_ID('sp_generar_pregunta', 'P') IS NOT NULL
-    DROP PROCEDURE sp_generar_pregunta;
+IF OBJECT_ID('sp_sam_generar_pregunta', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_generar_pregunta;
 GO
 
-CREATE PROCEDURE sp_generar_pregunta 
+CREATE PROCEDURE sp_sam_generar_pregunta 
     @p_ID_Pregunta INT,
     @p_ID_Evaluacion INT,
     @p_Pregunta VARCHAR(500),
@@ -26,11 +26,11 @@ END;
 GO
 
 -- 2. Assign response options to questions
-IF OBJECT_ID('sp_asignar_opcion_respuesta', 'P') IS NOT NULL
-    DROP PROCEDURE sp_asignar_opcion_respuesta;
+IF OBJECT_ID('sp_sam_asignar_opcion_respuesta', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_asignar_opcion_respuesta;
 GO
 
-CREATE PROCEDURE sp_asignar_opcion_respuesta
+CREATE PROCEDURE sp_sam_asignar_opcion_respuesta
     @p_ID_Pregunta INT,
     @p_Respuesta VARCHAR(500),
     @p_EsCorrecta CHAR(1)
@@ -42,11 +42,11 @@ END;
 GO
 
 -- 3. Assign Correct Response to a question
-IF OBJECT_ID('sp_asignar_respuesta_correcta', 'P') IS NOT NULL
-    DROP PROCEDURE sp_asignar_respuesta_correcta;
+IF OBJECT_ID('sp_sam_asignar_respuesta_correcta', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_asignar_respuesta_correcta;
 GO
 
-CREATE PROCEDURE sp_asignar_respuesta_correcta
+CREATE PROCEDURE sp_sam_asignar_respuesta_correcta
     @p_ID_Respuesta INT,
     @p_ID_Pregunta INT
 AS
@@ -59,11 +59,11 @@ END;
 GO
 
 -- 4. Assign evaluations to Users
-IF OBJECT_ID('sp_asignar_evaluacion_usuario', 'P') IS NOT NULL
-    DROP PROCEDURE sp_asignar_evaluacion_usuario;
+IF OBJECT_ID('sp_sam_asignar_evaluacion_usuario', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_asignar_evaluacion_usuario;
 GO
 
-CREATE PROCEDURE sp_asignar_evaluacion_usuario
+CREATE PROCEDURE sp_sam_asignar_evaluacion_usuario
     @p_ID_Evaluacion INT,
     @p_ID_Usuario INT,
     @p_FechaInicio DATETIME,
@@ -77,11 +77,11 @@ END;
 GO
 
 -- 5. Show evaluations assigned to an employee type user
-IF OBJECT_ID('sp_mostrar_evaluaciones_asignadas', 'P') IS NOT NULL
-    DROP PROCEDURE sp_mostrar_evaluaciones_asignadas;
+IF OBJECT_ID('sp_sam_mostrar_evaluaciones_asignadas', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_mostrar_evaluaciones_asignadas;
 GO
 
-CREATE PROCEDURE sp_mostrar_evaluaciones_asignadas
+CREATE PROCEDURE sp_sam_mostrar_evaluaciones_asignadas
     @p_ID_Usuario INT
 AS
 BEGIN
@@ -95,12 +95,12 @@ BEGIN
 END;
 GO
 
--- Show evaluation results
-IF OBJECT_ID('sp_mostrar_resultados_evaluacion', 'P') IS NOT NULL
-    DROP PROCEDURE sp_mostrar_resultados_evaluacion;
+-- 6. Show evaluation results
+IF OBJECT_ID('sp_sam_mostrar_resultados_evaluacion', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_mostrar_resultados_evaluacion;
 GO
 
-CREATE PROCEDURE sp_mostrar_resultados_evaluacion
+CREATE PROCEDURE sp_sam_mostrar_resultados_evaluacion
     @p_ID_EvaluacionAsignada INT
 AS
 BEGIN
@@ -114,12 +114,12 @@ BEGIN
 END;
 GO
 
--- Monitoring of all evaluations of users
-IF OBJECT_ID('sp_monitoreo_evaluaciones', 'P') IS NOT NULL
-    DROP PROCEDURE sp_monitoreo_evaluaciones;
+-- 7. Monitoring of all evaluations of users
+IF OBJECT_ID('sp_sam_monitoreo_evaluaciones', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_monitoreo_evaluaciones;
 GO
 
-CREATE PROCEDURE sp_monitoreo_evaluaciones
+CREATE PROCEDURE sp_sam_monitoreo_evaluaciones
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -140,3 +140,91 @@ BEGIN
         ea.FechaInicio DESC;
 END;
 GO
+
+-- 8. Crear - actualizar usuario
+IF OBJECT_ID('sp_sam_crear_actualizar_usuario', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_crear_actualizar_usuario;
+GO
+
+ALTER PROCEDURE sp_sam_crear_actualizar_usuario
+    @p_ID_Usuario INT = NULL, -- Permitir valor NULL para nuevos usuarios
+    @p_Nombre NVARCHAR(100),
+    @p_Puesto NVARCHAR(150),
+    @p_Departamento NVARCHAR(150),
+    @p_UsrLocal NVARCHAR(100),
+    @p_Habilitado BIT
+AS
+BEGIN
+    IF @p_ID_Usuario IS NOT NULL AND EXISTS (SELECT 1 FROM tb_sam_usuarios_w WHERE ID_Usuario = @p_ID_Usuario) and @p_ID_Usuario>0
+    BEGIN
+	--select * from tb_sam_usuarios_w
+        -- Usuario existente, actualizar
+        UPDATE tb_sam_usuarios_w
+        SET 
+            Nombre = @p_Nombre,
+            Puesto = @p_Puesto,
+            Departamento = @p_Departamento,
+            UsrLocal = @p_UsrLocal,
+            Habilitado = @p_Habilitado
+        WHERE ID_Usuario = @p_ID_Usuario;
+    END
+    ELSE
+    BEGIN
+        -- Nuevo usuario, insertar
+        DECLARE @v_NuevoID_Usuario INT;
+        SELECT @v_NuevoID_Usuario = ISNULL(MAX(ID_Usuario), 0) + 1 FROM tb_sam_usuarios_w;
+
+        INSERT INTO tb_sam_usuarios_w (ID_Usuario, ID_TipoUsuario, Nombre, Puesto, Departamento, UsrLocal, FechaCreacion, Habilitado)
+        VALUES (@v_NuevoID_Usuario,1, @p_Nombre, @p_Puesto, @p_Departamento, @p_UsrLocal, GETDATE(), 1);
+    END
+END;
+GO;
+
+-- 9. Mostar todos los usuarios
+IF OBJECT_ID('sp_sam_mostrar_usuarios', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_mostrar_usuarios;
+GO;
+
+CREATE PROCEDURE sp_sam_mostrar_usuarios
+AS
+BEGIN
+    --select * from tb_sam_usuarios_w
+	SELECT 
+		tb_u.ID_Usuario as 'ID',
+		tb_tu.Nombre_Tipo as 'Tipo de usuario',
+		tb_u.Nombre as 'Nombre de usuario',
+		tb_u.Puesto as 'Puesto',
+		tb_u.Departamento as 'Departamento',
+		tb_u.UsrLocal as 'UsrLocal',
+		tb_u.FechaCreacion as 'Ultima actualización',
+		tb_e.Nombre_Estatus as'Estatus de evaluación'
+	FROM
+		tb_sam_usuarios_w tb_u
+	INNER JOIN tb_sam_tipo_usuario_c tb_tu on tb_u.ID_TipoUsuario = tb_tu.ID_TipoUsuario
+	INNER JOIN tb_sam_estatus_c tb_e on tb_u.Habilitado = tb_e.ID_Estatus
+END;
+GO;
+
+-- 10. Mostrar todas las evaluaciones
+IF OBJECT_ID('sp_sam_mostrar_evaluaciones', 'P') IS NOT NULL
+    DROP PROCEDURE sp_sam_mostrar_evaluaciones;
+GO;
+
+CREATE PROCEDURE [dbo].[sp_sam_mostrar_evaluaciones] 
+    
+AS
+BEGIN
+--select *from tb_sam_evaluaciones_w
+	SELECT 
+		tb_eva.ID_Evaluacion as 'ID',
+		tb_te.Nombre as 'Tipo de evaluación',
+		tb_eva.Nombre_Evaluacion as 'Nombre de evaluación',
+		tb_eva.Version as 'Año de versión', 
+		tb_eva.FechaCreacion as 'Ultima actualización',
+		tb_est.Nombre_Estatus as 'Estatus'
+	FROM tb_sam_evaluaciones_w tb_eva
+	INNER JOIN tb_sam_tipo_evaluacion_c tb_te on tb_eva.ID_TipoEvaluacion = tb_te.ID_TipoEvaluacion
+	INNER JOIN tb_sam_estatus_c tb_est on tb_eva.Habilitada = tb_est.Id_Estatus
+
+END;
+GO;

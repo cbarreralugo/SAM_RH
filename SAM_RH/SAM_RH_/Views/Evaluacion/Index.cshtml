@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SAM_RH_Negocio.Modelo.Evaluacion_Modelo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Crear")
+</p>
+<table class="table">
+    <tr> 
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Evaluacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_evaluacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_evaluacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Version)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr> 
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Evaluacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_evaluacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre_evaluacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Version)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Creacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Detalles", "Detalles", new { id = item.ID_Evaluacion }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
